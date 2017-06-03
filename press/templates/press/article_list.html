@@ -1,0 +1,30 @@
+{% extends 'press/base.html' %}
+
+{% block content %}
+        <div class="article">
+            <div class="date">
+                {{ article.published_date }}
+            </div>
+			    <table border="1" style="width:100%">
+					<tr>
+						<th>Автор</th>
+						<th>Назва</th>
+						<th>Тип</th>
+						<th>Факультет</th>
+						<th>Дата створення</th>
+						<th>Посилання</th>
+					</tr>
+    {% for article in articles %}
+					<tr>
+						<td><strong>{{ article.author }}</strong></td>
+						<td><a href="{% url 'article_detail' pk=article.pk %}">{{ article.title }}</a></td>
+						<td>{{ article.atype }}</td>
+						<td>{{ article.faculty }}</td>
+			        	<td>{{ article.created_date }}</td>
+						<td>{{ article.link }}</td>
+					</tr>
+
+        </div>
+    {% endfor %}
+				</table>
+{% endblock content %}
